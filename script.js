@@ -26,8 +26,26 @@ function getHumanChoice() {
     else { return "userInputError" }
 }
 
-const cpuChoice = getComputerChoice();
-console.log(cpuChoice);
-
-const humanChoice = getHumanChoice();
-console.log(humanChoice);
+function computeResults(humanChoice, cpuChoice) {
+    if (humanChoice == cpuChoice) {
+        return "tie"
+    }
+    else if (humanChoice == "Rock" && cpuChoice == "Scissors") {
+        return "win"
+    }
+    else if (humanChoice == "Rock" && cpuChoice == "Paper") {
+        return "lose"
+    }
+    else if (humanChoice == "Paper" && cpuChoice == "Rock") {
+        return "win"
+    }
+    else if (humanChoice == "Paper" && cpuChoice == "Scissors") {
+        return "lose"
+    }
+    else if (humanChoice == "Scissors" && cpuChoice == "Paper") {
+        return "win"
+    }
+    else if (humanChoice == "Scissors" && cpuChoice == "Rock") {
+        return "lose"
+    }
+}
