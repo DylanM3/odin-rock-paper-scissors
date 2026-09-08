@@ -12,15 +12,14 @@ function getComputerChoice() {
 
 function getHumanChoice() {
     let humanChoice = prompt("Your Choice: ");
-    humanChoice.toLowerCase()
     
-    if (humanChoice == "rock") {
+    if (humanChoice.toLowerCase() == "rock") {
         return "Rock"
     }
-    else if (humanChoice == "paper") {
+    else if (humanChoice.toLowerCase() == "paper") {
         return "Paper"
     }
-    else if (humanChoice == "scissors") {
+    else if (humanChoice.toLowerCase() == "scissors") {
         return "Scissors"
     }
     else { return "userInputError" }
@@ -52,10 +51,10 @@ function computeResults(humanChoice, cpuChoice) {
 
 function playRound() {
     const cpuChoice = getComputerChoice();
-    console.log(cpuChoice);
-
     const humanChoice = getHumanChoice();
-    console.log(humanChoice);
+
+    console.log(`You Said: ${humanChoice}`);
+    console.log(`Our CPU Said: ${cpuChoice}`);
 
     const results = computeResults(humanChoice, cpuChoice)
 
