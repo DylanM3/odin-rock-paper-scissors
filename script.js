@@ -49,3 +49,25 @@ function computeResults(humanChoice, cpuChoice) {
         return "lose"
     }
 }
+
+function playRound() {
+    const cpuChoice = getComputerChoice();
+    console.log(cpuChoice);
+
+    const humanChoice = getHumanChoice();
+    console.log(humanChoice);
+
+    const results = computeResults(humanChoice, cpuChoice)
+
+    if (results == "win") {
+        console.log("You Won!")
+    }
+    else if (results == "lose") {
+        console.log("You lost.")
+    }
+    else if (results == "tie") {
+        console.log("You tied.")
+    }
+}
+
+playRound()
