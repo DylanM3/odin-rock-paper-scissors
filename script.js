@@ -13,38 +13,38 @@ function getComputerChoice() {
 function getHumanChoice() {
     let humanChoice = prompt("Your Choice: ");
     
-    if (humanChoice.toLowerCase() == "rock") {
+    if (humanChoice.toLowerCase() === "rock") {
         return "Rock"
     }
-    else if (humanChoice.toLowerCase() == "paper") {
+    else if (humanChoice.toLowerCase() === "paper") {
         return "Paper"
     }
-    else if (humanChoice.toLowerCase() == "scissors") {
+    else if (humanChoice.toLowerCase() === "scissors") {
         return "Scissors"
     }
     else { return "userInputError" }
 }
 
 function computeResults(humanChoice, cpuChoice) {
-    if (humanChoice == cpuChoice) {
+    if (humanChoice === cpuChoice) {
         return "tie"
     }
-    else if (humanChoice == "Rock" && cpuChoice == "Scissors") {
+    else if (humanChoice === "Rock" && cpuChoice === "Scissors") {
         return "win"
     }
-    else if (humanChoice == "Rock" && cpuChoice == "Paper") {
+    else if (humanChoice === "Rock" && cpuChoice === "Paper") {
         return "lose"
     }
-    else if (humanChoice == "Paper" && cpuChoice == "Rock") {
+    else if (humanChoice === "Paper" && cpuChoice === "Rock") {
         return "win"
     }
-    else if (humanChoice == "Paper" && cpuChoice == "Scissors") {
+    else if (humanChoice === "Paper" && cpuChoice === "Scissors") {
         return "lose"
     }
-    else if (humanChoice == "Scissors" && cpuChoice == "Paper") {
+    else if (humanChoice === "Scissors" && cpuChoice === "Paper") {
         return "win"
     }
-    else if (humanChoice == "Scissors" && cpuChoice == "Rock") {
+    else if (humanChoice === "Scissors" && cpuChoice === "Rock") {
         return "lose"
     }
 }
@@ -58,13 +58,13 @@ function playRound() {
 
     const results = computeResults(humanChoice, cpuChoice)
 
-    if (results == "win") {
+    if (results === "win") {
         console.log("You Won!")
     }
-    else if (results == "lose") {
+    else if (results === "lose") {
         console.log("You lost.")
     }
-    else if (results == "tie") {
+    else if (results === "tie") {
         console.log("You tied.")
     }
 }
