@@ -12,17 +12,13 @@ function getComputerChoice() {
 
 function getHumanChoice() {
     let humanChoice = prompt("Your Choice: ");
-    
-    if (humanChoice.toLowerCase() === "rock") {
-        return "Rock"
+
+    switch(humanChoice.toLowerCase()) {
+        case "rock": return "Rock";
+        case "paper": return "Paper";
+        case "scissors": return "Scissors";
+        default: return "userInputError";
     }
-    else if (humanChoice.toLowerCase() === "paper") {
-        return "Paper"
-    }
-    else if (humanChoice.toLowerCase() === "scissors") {
-        return "Scissors"
-    }
-    else { return "userInputError" }
 }
 
 function computeResults(humanChoice, cpuChoice) {
