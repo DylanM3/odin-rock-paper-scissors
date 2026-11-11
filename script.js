@@ -1,68 +1,68 @@
 function getComputerChoice() {
     let randNum = Math.random();
-    
-    if (randNum <= 0.33333) {
-        return "Rock";
+
+    if (randNum <= 1/3) {
+        return "rock";
     }
-    else if (randNum >= 0.66666) {
-        return "Paper";
+    else if (randNum > 2/3) {
+        return "paper";
     }
-    else { return "Scissors"; }     
+    else { return "scissors"; }
 }
 
-function getHumanChoice() {
-    let humanChoice = prompt("Your Choice: ");
-
-    switch(humanChoice.toLowerCase()) {
-        case "rock": return "Rock";
-        case "paper": return "Paper";
-        case "scissors": return "Scissors";
-        default: return "userInputError";
+function computeResults(userChoice, cpuChoice) {
+    if (userChoice === cpuChoice) {
+        return "Its a tie..."
     }
-}
-
-function computeResults(humanChoice, cpuChoice) {
-    if (humanChoice === cpuChoice) {
-        return "tie"
+    else if (userChoice === "rock" && cpuChoice === "scissors") {
+        return "You won!"
     }
-    else if (humanChoice === "Rock" && cpuChoice === "Scissors") {
-        return "win"
+    else if (userChoice === "rock" && cpuChoice === "paper") {
+        return "You lost."
     }
-    else if (humanChoice === "Rock" && cpuChoice === "Paper") {
-        return "lose"
+    else if (userChoice === "paper" && cpuChoice === "rock") {
+        return "You won!"
     }
-    else if (humanChoice === "Paper" && cpuChoice === "Rock") {
-        return "win"
+    else if (userChoice === "paper" && cpuChoice === "scissors") {
+        return "You lost."
     }
-    else if (humanChoice === "Paper" && cpuChoice === "Scissors") {
-        return "lose"
+    else if (userChoice === "scissors" && cpuChoice === "paper") {
+        return "You won!"
     }
-    else if (humanChoice === "Scissors" && cpuChoice === "Paper") {
-        return "win"
-    }
-    else if (humanChoice === "Scissors" && cpuChoice === "Rock") {
-        return "lose"
+    else if (userChoice === "scissors" && cpuChoice === "rock") {
+        return "You lost."
     }
 }
 
-function playRound() {
+// Get reference to Rock, Paper, and Scissors buttons
+const rockBtn = document.getElementById("rockBtn");
+const paperBtn = document.getElementById("paperBtn");
+const scissorsBtn = document.getElementById("scissorsBtn");
+// Get references to resultsContainer, and scorekeeping `h3` elements
+// const resultsContainer = document.getElementById("results-container");
+// const playerTracker = document.getElementById("player-tracker");
+// const cpuTracker = document.getElementById("cpu-tracker");
+
+
+function getUserInput(event){
+    if(event.target.id === "rockBtn") {return "rock";}
+    else if(event.target.id === "paperBtn") {return "paper";}
+    else if(event.target.id === "scissorsBtn") {return "scissors";}
+    else {return "logicError";}
+}
+
+
+function playRound(event){
+    const userChoice = getUserInput(event);
     const cpuChoice = getComputerChoice();
-    const humanChoice = getHumanChoice();
+    const result = computeResults(userChoice, cpuChoice)
 
-    console.log(`You Said: ${humanChoice}`);
-    console.log(`Our CPU Said: ${cpuChoice}`);
-
-    const results = computeResults(humanChoice, cpuChoice)
-
-    if (results === "win") {
-        console.log("You Won!")
-    }
-    else if (results === "lose") {
-        console.log("You lost.")
-    }
-    else if (results === "tie") {
-        console.log("You tied.")
-    }
+    console.log(`You picked: ${userChoice}`);
+    console.log(`CPU picked: ${cpuChoice}`);
+    console.log(result)
 }
 
-playRound()
+// Inducts a game upon click
+rockBtn.addEventListener("click", playRound);
+paperBtn.addEventListener("click", playRound);
+scissorsBtn.addEventListener("click", playRound);
