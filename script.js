@@ -38,10 +38,13 @@ function computeResults(userChoice, cpuChoice) {
 const rockBtn = document.getElementById("rockBtn");
 const paperBtn = document.getElementById("paperBtn");
 const scissorsBtn = document.getElementById("scissorsBtn");
-// Get references to resultsContainer, and scorekeeping `h3` elements
-// const resultsContainer = document.getElementById("results-container");
-// const playerTracker = document.getElementById("player-tracker");
-// const cpuTracker = document.getElementById("cpu-tracker");
+// Get references to resultsContainer, and all elements within
+const resultsContainer = document.getElementById("results-container");
+const displayUserChoice = document.getElementById("displayUserChoice");
+const displayCPUChoice = document.getElementById("displayCPUChoice");
+const displayResult = document.getElementById("displayResult")
+const playerTracker = document.getElementById("player-tracker");
+const cpuTracker = document.getElementById("cpu-tracker");
 
 
 function getUserInput(event){
@@ -57,9 +60,9 @@ function playRound(event){
     const cpuChoice = getComputerChoice();
     const result = computeResults(userChoice, cpuChoice)
 
-    console.log(`You picked: ${userChoice}`);
-    console.log(`CPU picked: ${cpuChoice}`);
-    console.log(result)
+    displayUserChoice.textContent = `You Picked: ${userChoice}`;
+    displayCPUChoice.textContent = `CPU Picked: ${cpuChoice}`;
+    displayResult.textContent = result;
 }
 
 // Inducts a game upon click
