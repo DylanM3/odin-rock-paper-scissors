@@ -1,0 +1,88 @@
+/* ------------
+DEFAULT STYLING
+ ----------- */
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Ensures the body takes up at least the full screen height */
+}
+
+/* ------------
+WRAPPER STYLING
+ ----------- */
+
+.wrapper {
+  display: flex;
+  flex: 1; /* Expands to fill all available space, pushing the footer down */
+  justify-content: center; /* Centers horizontally */
+  align-items: center; /* Centers vertically */
+  height: 100vh; /* Fill the entire viewport height */
+}
+
+/* -----------
+BUTTON STYLING
+ ---------- */
+
+#btn-container {
+  display: flex;
+  gap: 100px;
+}
+
+button {
+  background-size: contain; /* Prevents image cutoff */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: transparent; /* Removes the default grey button box */
+
+  /* Button sizing */
+  width: 200px;
+  height: 200px;
+
+  /* Set misc properties */
+  border: none;
+  cursor: pointer;
+  transition: scale 0.15s;
+}
+
+/* ANIMATIONS */
+button:hover {
+  scale: 1.08;
+}
+button:active {
+  scale: 0.95;
+}
+
+/* BACKGROUND IMAGES */
+#rockBtn {
+  background-image: url("images/rockIcon.svg");
+}
+#paperBtn {
+  background-image: url("images/paperIcon.svg");
+}
+#scissorsBtn {
+  background-image: url("images/scissorsIcon.svg");
+}
+
+/* ------------
+RESULTS STYLING
+ ----------- */
+
+#results-container {
+  
+}
+
+/* -----------
+FOOTER STYLING
+ ---------- */
+
+footer {
+    background-color: lightgray;
+    text-align: center;
+    font-weight: bold;
+}

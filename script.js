@@ -98,7 +98,7 @@ function playRound(event){
     const matchWinner = checkScore();
     if (matchWinner) {
         isFinished = true;
-        displayResult.textContent = `${result} \n ${matchWinner} (Click any button to play again!)`;
+        displayResult.textContent = `${result}: ${matchWinner} (Click any button to play again!)`;
     }
 }
 
