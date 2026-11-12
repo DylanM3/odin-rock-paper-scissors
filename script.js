@@ -1,30 +1,19 @@
 // Get reference to Rock, Paper, and Scissors buttons
-const rockBtn = document.getElementById("rockBtn");
-const paperBtn = document.getElementById("paperBtn");
-const scissorsBtn = document.getElementById("scissorsBtn");
-
-// Get references to resultsContainer, and all elements within
-const resultsContainer = document.getElementById("results-container");
-const displayUserChoice = document.getElementById("displayUserChoice");
-const displayCPUChoice = document.getElementById("displayCPUChoice");
-const displayResult = document.getElementById("displayResult")
-const playerTracker = document.getElementById("player-tracker");
-const cpuTracker = document.getElementById("cpu-tracker");
-
-// Create variables to track wins
-let userWins = 0;
-let cpuWins = 0;
-let isFinished = false;
+// Player Buttons:
+const usrRockBtn = document.getElementById("usrRockBtn");
+const usrPaperBtn = document.getElementById("usrPaperBtn");
+const usrScissorsBtn = document.getElementById("usrScissorsBtn");
+// CPU Buttons:
+const cpuRockBtn = document.getElementById("cpuRockBtn");
+const cpuPaperBtn = document.getElementById("cpuPaperBtn");
+const cpuScissorsBtn = document.getElementById("cpuScissorsBtn");
 
 // ----------------------------------------------------------------------------
 
 function getUserInput(event){
-    if(event.target.id === "userRockBtn") {
-        event.target.style.backgroundImage = `url("images/greenIcons/rock.svg")`;
-        return "rock";
-    }
-    else if(event.target.id === "userPaperBtn") {return "paper";}
-    else if(event.target.id === "userScissorsBtn") {return "scissors";}
+    if(event.target.id === "usrRockBtn") {return "rock";}
+    else if(event.target.id === "usrPaperBtn") {return "paper";}
+    else if(event.target.id === "usrScissorsBtn") {return "scissors";}
     else {return "logicError";}
 }
 
@@ -56,7 +45,7 @@ function computeResults(userChoice, cpuChoice) {
         scissors: "paper"
     };
 
-    // If the user's choice beats the CPU's choice, the user wins
+    // If the user's choice beats the cpu's choice, the user wins
     if (winningMoves[userChoice] === cpuChoice) {
         userWins++;
         return "You won this round!";
@@ -101,7 +90,7 @@ function playRound(event){
     const matchWinner = checkScore();
     if (matchWinner) {
         isFinished = true;
-        displayResult.textContent = `${result}: ${matchWinner} (Click any button to play again!)`;
+        displayResult.textContent = `${result} \n ${matchWinner} (Click any button to play again!)`;
     }
 }
 
