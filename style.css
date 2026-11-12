@@ -20,6 +20,7 @@ WRAPPER STYLING
 .wrapper {
   display: flex;
   flex: 1; /* Expands to fill all available space, pushing the footer down */
+  flex-direction: column;
   justify-content: center; /* Centers horizontally */
   align-items: center; /* Centers vertically */
   height: 100vh; /* Fill the entire viewport height */
@@ -59,14 +60,14 @@ button:active {
 }
 
 /* BACKGROUND IMAGES */
-#rockBtn {
-  background-image: url("images/rockIcon.svg");
+#userRockBtn {
+  background-image: url("images/whiteIcons/rockIcon.svg");
 }
-#paperBtn {
-  background-image: url("images/paperIcon.svg");
+#userPaperBtn {
+  background-image: url("images/whiteIcons/paperIcon.svg");
 }
-#scissorsBtn {
-  background-image: url("images/scissorsIcon.svg");
+#userScissorsBtn {
+  background-image: url("images/whiteIcons/scissorsIcon.svg");
 }
 
 /* ------------
@@ -74,7 +75,10 @@ RESULTS STYLING
  ----------- */
 
 #results-container {
-  
+  display: flex;
+  gap: 50px;
+  background-color: lightgray;
+  min-width: 40vw;
 }
 
 /* -----------

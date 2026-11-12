@@ -19,9 +19,12 @@ let isFinished = false;
 // ----------------------------------------------------------------------------
 
 function getUserInput(event){
-    if(event.target.id === "rockBtn") {return "rock";}
-    else if(event.target.id === "paperBtn") {return "paper";}
-    else if(event.target.id === "scissorsBtn") {return "scissors";}
+    if(event.target.id === "userRockBtn") {
+        event.target.style.backgroundImage = `url("images/greenIcons/rock.svg")`;
+        return "rock";
+    }
+    else if(event.target.id === "userPaperBtn") {return "paper";}
+    else if(event.target.id === "userScissorsBtn") {return "scissors";}
     else {return "logicError";}
 }
 
@@ -53,7 +56,7 @@ function computeResults(userChoice, cpuChoice) {
         scissors: "paper"
     };
 
-    // If the user's choice beats the cpu's choice, the user wins
+    // If the user's choice beats the CPU's choice, the user wins
     if (winningMoves[userChoice] === cpuChoice) {
         userWins++;
         return "You won this round!";
