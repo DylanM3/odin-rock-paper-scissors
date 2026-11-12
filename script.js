@@ -7,13 +7,25 @@ const usrScissorsBtn = document.getElementById("usrScissorsBtn");
 const cpuRockBtn = document.getElementById("cpuRockBtn");
 const cpuPaperBtn = document.getElementById("cpuPaperBtn");
 const cpuScissorsBtn = document.getElementById("cpuScissorsBtn");
+// Button Containers:
+const usrButtonContainer = document.getElementById("usr-btn-container");
+const cpuButtonContainer = document.getElementById("cpu-btn-container");
 
 // ----------------------------------------------------------------------------
 
 function getUserInput(event){
-    if(event.target.id === "usrRockBtn") {return "rock";}
-    else if(event.target.id === "usrPaperBtn") {return "paper";}
-    else if(event.target.id === "usrScissorsBtn") {return "scissors";}
+    if(event.target.id === "usrRockBtn") {
+        event.target.style.backgroundImage = `url("images/greenIcons/rock.svg")`;
+        return "rock";
+    }
+    else if(event.target.id === "usrPaperBtn") {
+        event.target.style.backgroundImage = `url("images/greenIcons/paper.svg")`;
+        return "paper";
+    }
+    else if(event.target.id === "usrScissorsBtn") {
+        event.target.style.backgroundImage = `url("images/greenIcons/scissors.svg")`;
+        return "scissors";
+    }
     else {return "logicError";}
 }
 
@@ -22,13 +34,18 @@ function getUserInput(event){
 function getComputerChoice(){
     let randNum = Math.random();
 
-    if (randNum <= 1/3) {
+    if (randNum < 1/3) {
+        cpuRockBtn.style.backgroundImage = `url("images/redIcons/rock.svg")`;
         return "rock";
     }
     else if (randNum > 2/3) {
+        cpuPaperBtn.style.backgroundImage = `url("images/redIcons/paper.svg")`;
         return "paper";
     }
-    else { return "scissors"; }
+    else {
+        cpuScissorsBtn.style.backgroundImage = `url("images/redIcons/scissors.svg")`;
+        return "scissors"
+    }
 }
 
 // ----------------------------------------------------------------------------
@@ -47,55 +64,55 @@ function computeResults(userChoice, cpuChoice) {
 
     // If the user's choice beats the cpu's choice, the user wins
     if (winningMoves[userChoice] === cpuChoice) {
-        userWins++;
-        return "You won this round!";
+        usrButtonContainer.style.backgroundColor = `rgb(255 215 0 / 0.5)`;
+        usrButtonContainer.style.border =  `6px solid rgb(255 215 0)`;
     } else {
-        cpuWins++;
-        return "You lost this round.";
+        cpuButtonContainer.style.backgroundColor = `rgb(255 215 0 / 0.5)`;
+        cpuButtonContainer.style.border =  `6px solid rgb(255 215 0)`;
     }
 }
 
 // ----------------------------------------------------------------------------
 
-function checkScore(){
-    if(userWins >= 5) {
-        return "Congratulations! You won the match!";
-    }
-    else if(cpuWins >= 5) { // Fixed from cpuTracker to cpuWins
-        return "Game Over... the CPU won the match.";
-    }
-    return null;
+function disableButtons() {
+    usrRockBtn.disabled = true;
+    usrPaperBtn.disabled = true;
+    usrPaperBtn.disabled = true;
 }
 
-function playRound(event){
-    // If the game was finished, reset scores on the next click to start a new match
-    if (isFinished) {
-        userWins = 0;
-        cpuWins = 0;
-        isFinished = false;
-    }
+function resetGame() {
+    usrRockBtn.disabled = false;
+    usrPaperBtn.disabled = false;
+    usrPaperBtn.disabled = false;
+    usrRockBtn.style.backgroundImage = `url("images/whiteIcons/rock.svg")`;
+    usrPaperBtn.style.backgroundImage = `url("images/whiteIcons/paper.svg")`;
+    usrScissorsBtn.style.backgroundImage = `url("images/whiteIcons/scissors.svg")`;
+    cpuRockBtn.style.backgroundImage = `url("images/whiteIcons/rock.svg")`;
+    cpuPaperBtn.style.backgroundImage = `url("images/whiteIcons/paper.svg")`;
+    cpuScissorsBtn.style.backgroundImage = `url("images/whiteIcons/scissors.svg")`;
 
+}
+
+async function playRound(event) {
     const userChoice = getUserInput(event);
+    disableButtons();
+
+    // Pauses for one second before the CPU makes its choice
+    await new Promise(r => setTimeout(r, 1000));
     const cpuChoice = getComputerChoice();
+
+    // Pauses for one second before the results are calculated for suspense
+    await new Promise(r => setTimeout(r, 1000));
     const result = computeResults(userChoice, cpuChoice);
 
-    displayUserChoice.textContent = `You Picked: ${userChoice}`;
-    displayCPUChoice.textContent = `CPU Picked: ${cpuChoice}`;
-    displayResult.textContent = result;
-
-    playerTracker.textContent = `Your Wins: ${userWins}`;
-    cpuTracker.textContent = `CPU Wins: ${cpuWins}`;
-
-    // Check if someone reached 5 wins
-    const matchWinner = checkScore();
-    if (matchWinner) {
-        isFinished = true;
-        displayResult.textContent = `${result} \n ${matchWinner} (Click any button to play again!)`;
-    }
+    // TEMPORARY: Pauses for half a second before the CPU makes its choice
+    await new Promise(r => setTimeout(r, 3000));
+    resetButtons()
 }
+
 
 // ----------------------------------------------------------------------------
 
-rockBtn.addEventListener("click", playRound);
-paperBtn.addEventListener("click", playRound);
-scissorsBtn.addEventListener("click", playRound);
+usrRockBtn.addEventListener("click", playRound);
+usrPaperBtn.addEventListener("click", playRound);
+usrScissorsBtn.addEventListener("click", playRound);

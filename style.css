@@ -11,15 +11,30 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 30px;
 }
 
 /* -----------
 BUTTON STYLING
  ---------- */
 
-.btn-container {
+#usr-btn-container, #cpu-btn-container {
   display: flex;
   gap: 150px;
+
+  /* Background styling */
+  padding: 30px 60px;
+  border-radius: 20px;
+}
+
+#usr-btn-container {
+  background-color: rgb(0 128 0 / 0.5);
+  border: 6px solid rgb(0 128 0);
+}
+
+#cpu-btn-container {
+  background-color: rgb(255 0 0 / 0.5);
+  border: 6px solid rgb(255 0 0);
 }
 
 button {
@@ -36,21 +51,31 @@ button:hover {
   scale: 1.08;
 }
 
-button:active {
+/* Dont make a click animation if disabled */
+#usr-btn-container button:not(:disabled):active {
   scale: 0.95;
 }
 
 /* BACKGROUND IMAGES */
 #usrRockBtn {
-  background-image: url("images/whiteIcons/rockIcon.svg");
+  background-image: url("images/whiteIcons/rock.svg");
+}
+#cpuRockBtn {
+  background-image: url("images/whiteIcons/rock.svg");
 }
 
 #usrPaperBtn {
-  background-image: url("images/whiteIcons/paperIcon.svg");
+  background-image: url("images/whiteIcons/paper.svg");
+}
+#cpuPaperBtn {
+  background-image: url("images/whiteIcons/paper.svg");
 }
 
 #usrScissorsBtn {
-  background-image: url("images/whiteIcons/scissorsIcon.svg");
+  background-image: url("images/whiteIcons/scissors.svg");
+}
+#cpuScissorsBtn {
+  background-image: url("images/whiteIcons/scissors.svg");
 }
 
 /* -----------
@@ -65,7 +90,7 @@ footer {
   width: 100%;
   height: 8vh;
   /* VISUAL STYLING */
-  background-color: lightgray;
+  background-color: #e8e8e8;
   font-weight: bold;
   display: flex;
   justify-content: center;
