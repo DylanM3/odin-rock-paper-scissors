@@ -78,6 +78,19 @@ button:hover {
   background-image: url("images/whiteIcons/scissors.svg");
 }
 
+/* Reset game styling */
+#resetBtn {
+  background-color: rgb(232 232 232);
+  /*border: 6px solid rgb(232 232 232);*/
+  border-radius: 10px;
+  margin: 25px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-height: 5vh;
+}
+
 /* -----------
 FOOTER STYLING
  ---------- */
@@ -96,3 +109,4 @@ footer {
   justify-content: center;
   align-items: center;
 }
+

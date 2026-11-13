@@ -10,6 +10,10 @@ const cpuScissorsBtn = document.getElementById("cpuScissorsBtn");
 // Button Containers:
 const usrButtonContainer = document.getElementById("usr-btn-container");
 const cpuButtonContainer = document.getElementById("cpu-btn-container");
+// Reset Button:
+const resetButton = document.getElementById("resetBtn");
+// Define misc variables
+let isTerminated = false;
 
 // ----------------------------------------------------------------------------
 
@@ -77,22 +81,32 @@ function computeResults(userChoice, cpuChoice) {
 function disableButtons() {
     usrRockBtn.disabled = true;
     usrPaperBtn.disabled = true;
-    usrPaperBtn.disabled = true;
+    usrScissorsBtn.disabled = true;
 }
 
 function resetGame() {
+    isTerminated = true;
+
+    // Re-enable buttons
     usrRockBtn.disabled = false;
     usrPaperBtn.disabled = false;
     usrPaperBtn.disabled = false;
+    // Reset images
     usrRockBtn.style.backgroundImage = `url("images/whiteIcons/rock.svg")`;
     usrPaperBtn.style.backgroundImage = `url("images/whiteIcons/paper.svg")`;
     usrScissorsBtn.style.backgroundImage = `url("images/whiteIcons/scissors.svg")`;
     cpuRockBtn.style.backgroundImage = `url("images/whiteIcons/rock.svg")`;
     cpuPaperBtn.style.backgroundImage = `url("images/whiteIcons/paper.svg")`;
     cpuScissorsBtn.style.backgroundImage = `url("images/whiteIcons/scissors.svg")`;
+    // Reset result styling
+    usrButtonContainer.style.backgroundColor = `rgb(0 128 0 / 0.5)`;
+    usrButtonContainer.style.border =  `6px solid rgb(0 128 0)`;
+    cpuButtonContainer.style.backgroundColor = `rgb(255 0 0 / 0.5)`;
+    cpuButtonContainer.style.border =  `6px solid rgb(255 0 0)`;
 
 }
 
+// Async function to allow for pauses
 async function playRound(event) {
     const userChoice = getUserInput(event);
     disableButtons();
@@ -104,10 +118,6 @@ async function playRound(event) {
     // Pauses for one second before the results are calculated for suspense
     await new Promise(r => setTimeout(r, 1000));
     const result = computeResults(userChoice, cpuChoice);
-
-    // TEMPORARY: Pauses for half a second before the CPU makes its choice
-    await new Promise(r => setTimeout(r, 3000));
-    resetButtons()
 }
 
 
@@ -116,3 +126,4 @@ async function playRound(event) {
 usrRockBtn.addEventListener("click", playRound);
 usrPaperBtn.addEventListener("click", playRound);
 usrScissorsBtn.addEventListener("click", playRound);
+resetButton.addEventListener("click", resetGame);
