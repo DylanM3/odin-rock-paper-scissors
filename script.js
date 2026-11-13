@@ -90,7 +90,7 @@ function resetGame() {
     // Re-enable buttons
     usrRockBtn.disabled = false;
     usrPaperBtn.disabled = false;
-    usrPaperBtn.disabled = false;
+    usrScissorsBtn.disabled = false;
     // Reset images
     usrRockBtn.style.backgroundImage = `url("images/whiteIcons/rock.svg")`;
     usrPaperBtn.style.backgroundImage = `url("images/whiteIcons/paper.svg")`;
